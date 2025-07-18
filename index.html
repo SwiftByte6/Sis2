@@ -43,11 +43,9 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
       text-decoration: none;
-      cursor: pointer;
-      z-index: 2;
     }
 
-    .forgive-button:hover {
+    .iloveyou:hover {
       background-color: #ff66b2;
       transform: scale(1.05);
     }
@@ -85,107 +83,31 @@
         opacity: 0;
       }
     }
-
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.4);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 5;
-    }
-
-    .modal {
-      background: #fff0f5;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 90%;
-      width: 400px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      animation: fadeIn 0.5s ease-out;
-    }
-
-    .modal h2 {
-      color: #ff4d88;
-      margin-bottom: 15px;
-    }
-
-    .modal p {
-      font-size: 1.1em;
-      color: #555;
-    }
-
-    .close-btn {
-      margin-top: 20px;
-      background-color: #ff80bf;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .close-btn:hover {
-      background-color: #ff4da6;
-    }
-
-    @keyframes fadeIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
   </style>
 </head>
 <body>
   <h1>I’m Sorry 😔</h1>
-  <p>
-    Baby, I know I’ve hurt you, and I’m truly sorry.  
-    Everything was a misunderstanding ❤️ 
-    You mean so much to me… please forgive me. 
-  </p>
-
-  <button class="forgive-button" onclick="openModal()">Forgive Me?</button>
-
-  <div class="hearts"></div>
-
-  <!-- Modal -->
-  <div class="modal-overlay" id="modal">
-    <div class="modal">
-      <h2>Thank You Angel 😇</h2>
-      <p>You’ve just made my heart smile! ❤️<br>
-      I promise to be better every day.</p>
-      <button class="close-btn" onclick="closeModal()">Close</button>
-    </div>
+  <p>Baby, I know I’ve hurt you, and I’m truly sorry. Everything was a misunderstanding ❤️ You mean so much to me… please forgive me.</p>
+  <button class="forgive-button" id="playBtn">Play Music</button>
+  <audio id="apologyAudio" src="Sorry Sorry  Pawan Singh, Kajal Raghwani  Bhojpuriya Raja  Bhojpuri Song.mp3"></audio>
+  <div class="hearts">
+    <script>
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 1.5 + 1.2) + 'rem';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        heart.style.animationDelay = (Math.random() * 5) + 's';
+        document.querySelector('.hearts').appendChild(heart);
+      }
+      // Play music on button click
+      document.getElementById('playBtn').onclick = function() {
+        const audio = document.getElementById('apologyAudio');
+        audio.play();
+      };
+    </script>
   </div>
-
-  <script>
-    // Floating hearts
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '❤️';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = (Math.random() * 1.5 + 1.2) + 'rem';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      heart.style.animationDelay = (Math.random() * 5) + 's';
-      document.querySelector('.hearts').appendChild(heart);
-    }
-
-    // Modal functions
-    function openModal() {
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
 </body>
 </html>
